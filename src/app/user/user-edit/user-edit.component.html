@@ -1,0 +1,63 @@
+<div>
+  <div class="text-center text-body"><h3> {{data['header']}} </h3></div>
+
+
+  <form class="example-container" [formGroup]="editForm" autocomplete="off" (ngSubmit)="editpost(data['id'],editForm.value)"  #form="ngForm" novalidate>
+
+
+
+      <mat-form-field appearance="standard">
+          <mat-label>ID : </mat-label>
+          <input matInput value="{{data['id']}}" type="text" readonly required>
+        </mat-form-field>
+
+
+    <mat-form-field appearance="standard" >
+      <mat-label>FirstName :</mat-label>
+      <input matInput placeholder="{{data['Firstname']}}" formControlName="Firstname">
+      <mat-hint>Input charactor only A-Z</mat-hint>
+      <mat-error *ngIf="hasError('Firstname', 'pattern')">Name Format is only A-Z !!! </mat-error>
+      <mat-error *ngIf="hasError('Firstname', 'required')">You must input a value</mat-error>
+    </mat-form-field>
+    <br>
+
+
+    <mat-form-field appearance="standard" >
+        <mat-label>LastName:</mat-label>
+        <input matInput placeholder="{{data['Lastname']}}" formControlName="Lastname">
+        <mat-hint>Input charactor only A-Z</mat-hint>
+        <mat-error *ngIf="hasError('Lastname', 'pattern')">Name Format is only A-Z !!! </mat-error>
+        <mat-error *ngIf="hasError('Lastname', 'required')">You must input a value</mat-error>
+      </mat-form-field>
+      <br>
+
+
+    <mat-form-field appearance="standard" >
+        <mat-label>PhoneNumber:</mat-label>
+        <mat-hint>Input charactor only 0-9</mat-hint>
+        <input matInput placeholder="{{data['Phonenumber']}}" formControlName="Phonenumber">
+        <mat-error *ngIf="hasError('Phonenumber', 'pattern')">Phone Type Error</mat-error>
+        <mat-error *ngIf="hasError('Phonenumber', 'required')">You must input a value</mat-error>
+      </mat-form-field>
+      <br>
+
+
+    <mat-form-field appearance="standard" >
+        <mat-label>Email:</mat-label>
+        <input matInput placeholder="{{data['Email']}}" formControlName="Email">
+        <mat-hint>example@mail.com</mat-hint>
+        <mat-error *ngIf="hasError('Email', 'pattern')">Email Format is Error</mat-error>
+        <mat-error *ngIf="hasError('Email', 'required')">You must input a value</mat-error>
+      </mat-form-field>
+      <br>
+
+      <hr>
+      <div class="example-button-row text-right">
+      <button mat-raised-button color="primary" class="btn-block" [disabled]="editForm.invalid">Create</button>
+      <button mat-raised-button color="warn" class="btn-block" (click)="onNoClick()" >Exit</button>
+      </div>
+
+  </form>
+
+
+</div>
